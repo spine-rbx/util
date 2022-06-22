@@ -32,6 +32,14 @@ function Util.Each(Parent: Instance, ChildAdded: (Child: Instance) -> ()?, Child
 	if ChildRemoved then
 		Connections.ChildRemoved = Parent.ChildRemoved:Connect(ChildRemoved)
 	end
+
+	Connections.Disconnect = function()
+		for _, v in pairs(Connections) do
+			v:Disconnect()
+		end
+	end
+
+	return Connections
 end
 
 return Util
